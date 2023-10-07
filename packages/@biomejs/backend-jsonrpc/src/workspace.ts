@@ -698,6 +698,10 @@ export interface Nursery {
 	 */
 	noDuplicateJsonKeys?: RuleConfiguration;
 	/**
+	 * Disallow empty block statements and static blocks.
+	 */
+	noEmptyBlock?: RuleConfiguration;
+	/**
 	 * Disallow empty character classes in regular expression literals.
 	 */
 	noEmptyCharacterClassInRegex?: RuleConfiguration;
@@ -1113,6 +1117,7 @@ export type PossibleOptions =
 	| HooksOptions
 	| NamingConventionOptions
 	| RestrictedGlobalsOptions
+	| NoEmptyBlockOptions
 	| null;
 /**
  * Options for the rule `noNestedModuleImports`.
@@ -1153,6 +1158,15 @@ export interface RestrictedGlobalsOptions {
 	 * A list of names that should trigger the rule
 	 */
 	deniedGlobals?: string[];
+}
+/**
+ * Rule's options.
+ */
+export interface NoEmptyBlockOptions {
+	/**
+	 * If `true`, then empty catch blocks are allowed
+	 */
+	allowEmptyCatch: boolean;
 }
 export interface Hooks {
 	/**
@@ -1335,6 +1349,7 @@ export type Category =
 	| "lint/nursery/noApproximativeNumericConstant"
 	| "lint/nursery/noConfusingVoidType"
 	| "lint/nursery/noDuplicateJsonKeys"
+	| "lint/nursery/noEmptyBlock"
 	| "lint/nursery/noEmptyCharacterClassInRegex"
 	| "lint/nursery/noExcessiveComplexity"
 	| "lint/nursery/noFallthroughSwitchClause"
